@@ -1,5 +1,6 @@
 #include <QCoreApplication>
-
+#include <iostream>
+using namespace std;
 
 class women{
 public:
@@ -18,8 +19,8 @@ public:
     int getGrowth() const;
     void setAge(int value);
 };
-void sortAge(women wome[]);
-int searchAge(women wome[]);
+void sortAge(women *wome);
+women searchAge(women wome[], int sAge);
 
 
 
@@ -27,15 +28,25 @@ int main()
 {
 
     women womens[10];
-        for(int i=0;i++;i<=9){
+    for(int i=0;i<9;i++){
+        int j=20+i;
         womens[i].setGrowth(i+160);
-        womens[i].setAge(i+20);
+        womens[i].setAge(j);
     }
 
 
-   sortAge(womens);
-   searchAge(womens);
 
+
+
+   if(searchAge(womens,22).Age==0){
+   cout<<"no object";
+   }
+   else {
+      cout<<searchAge(womens,22).Age;
+   }
+
+
+   sortAge(womens);
 
     //return;
 }
@@ -62,10 +73,10 @@ return Age;
 
 
 
-void sortAge(women wome[]){
+void sortAge(women *wome){
     women a;
-    for (int i =0; i++; i<=8){
-        for (int j =0;j++;j<=8){
+    for (int i =0; i<=8; i++){
+        for (int j =0;j<=8;j++){
             if ((wome[j].Age)<wome[j+1].Age){
                 a=wome[j];
 
@@ -76,14 +87,16 @@ void sortAge(women wome[]){
 }
 
 
-int searchAge(women wome[]){
-    int maxAge;
-    for (int i =0; i++; i<=9){
-        if (wome[i].Age>maxAge){
-            maxAge=i;
-
+women searchAge(women wome[],int sAge){
+    women a;
+  //cout<<wome[3].Age<<"   ";
+    for (int i =0;  i<=9; i++){
+        if (wome[i].Age==sAge){
+                   // cout<<wome[i].Age;
+            return wome[i];
 
         }
     }
-    return maxAge;
+    a.Age=0;
+    return a;
 }
