@@ -48,7 +48,7 @@ int main()
 
    sortAge(womens);
 
-    //return;
+
 }
 
 void women::setGrowth(int value)
@@ -89,10 +89,10 @@ void sortAge(women *wome){
 
 women searchAge(women wome[],int sAge){
     women a;
-  //cout<<wome[3].Age<<"   ";
+
     for (int i =0;  i<=9; i++){
         if (wome[i].Age==sAge){
-                   // cout<<wome[i].Age;
+
             return wome[i];
 
         }
