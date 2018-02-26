@@ -10,8 +10,10 @@ public:
     int Growth;
     women(){}
 
-    women(int _age,int _growth){
-        Age=_age;
+    women(int _age,int _growth):
+    Age(_age)
+    {
+        //Age=_age;
         Growth=_growth;
     }
     int getAge() const;
@@ -19,8 +21,9 @@ public:
     int getGrowth() const;
     void setAge(int value);
 };
-void sortAge(women *wome);
-women searchAge(women wome[], int sAge);
+void sortAge(women *wome, int b);
+
+women *searchAge(women wome[], int sAge);
 
 
 
@@ -35,18 +38,17 @@ int main()
     }
 
 
+   sortAge(womens, 10);
 
-
-
-   if(searchAge(womens,22).Age==0){
+   if(searchAge(womens,22)==nullptr){
    cout<<"no object";
    }
    else {
-      cout<<searchAge(womens,22).Age;
+      cout<<searchAge(womens,22)->Age;
    }
 
 
-   sortAge(womens);
+  // sortAge(womens);
 
 
 }
@@ -73,10 +75,10 @@ return Age;
 
 
 
-void sortAge(women *wome){
+void sortAge(women *wome, int b){
     women a;
-    for (int i =0; i<=8; i++){
-        for (int j =0;j<=8;j++){
+    for (int i =0; i<=b-1; i++){
+        for (int j =0;j<=b-1;j++){
             if ((wome[j].Age)<wome[j+1].Age){
                 a=wome[j];
 
@@ -87,16 +89,17 @@ void sortAge(women *wome){
 }
 
 
-women searchAge(women wome[],int sAge){
+women *searchAge(women wome[],int sAge){
     women a;
-
+    women *b=nullptr;
     for (int i =0;  i<=9; i++){
         if (wome[i].Age==sAge){
 
-            return wome[i];
+            return &wome[i];
 
         }
     }
-    a.Age=0;
-    return a;
+
+   // a.Age=*b;
+    return b;
 }
